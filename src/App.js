@@ -13,7 +13,7 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
-import Proba from "./components/sajatosztajok/Proba"
+import Proba from "./sajatosztajok/Proba"
 
 class App extends Component {
   constructor(props) {

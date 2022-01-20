@@ -13,7 +13,12 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
-import Proba from "./sajatosztajok/Proba"
+import Proba from "./sajatosztajok/Proba";
+import Anime from "./sajatosztajok/Anime";
+import Megjelenes from "./sajatosztajok/Megjelenes";
+import Mufaj from "./sajatosztajok/Mufaj";
+import Szavazas from "./sajatosztajok/Szavazas";
+import Seged from "./sajatosztajok/Seged"
 
 class App extends Component {
   constructor(props) {
@@ -62,6 +67,30 @@ class App extends Component {
             <li className="nav-item">
               <Link to={"/Proba"} className="nav-link">
                 Próba
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={"/Anime"} className="nav-link">
+                Animék
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={"/Mufaj"} className="nav-link">
+                Mufaj
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={"/Megjelenes"} className="nav-link">
+                Megjelenés
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={"/Szavazas"} className="nav-link">
+                Szavazás
               </Link>
             </li>
 
@@ -132,6 +161,10 @@ class App extends Component {
             <Route path="/mod" component={BoardModerator} />
             <Route path="/admin" component={BoardAdmin} />
             <Route path="/Proba" component={Proba} />
+            <Route path="/Anime" component={Anime} />
+            <Route path="/Megjelenes" component={Megjelenes} />
+            <Route path="/Mufaj" component={Mufaj} />
+            <Route path="/Szavazas" component={Szavazas} />
           </Switch>
         </div>
       </div>
@@ -139,4 +172,8 @@ class App extends Component {
   }
 }
 
+
+
+
 export default App;
+

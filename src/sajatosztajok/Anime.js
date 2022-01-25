@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity } from 'react-native-web';
 
 
 export default class Anime extends React.Component {

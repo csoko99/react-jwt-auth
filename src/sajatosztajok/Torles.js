@@ -3,14 +3,33 @@ import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOp
 
 
 
-export default class Szavazas extends React.Component {
+export default class Torles extends React.Component {
 
   constructor(props){
     super(props);
     this.state ={ isLoading: true}
   }
 
-  szavazat=(szam)=>{
+  lekerdez=() => {
+    return fetch('http://localhost:8080/animek')
+    .then((response) => response.json())
+    .then((responseJson) => {
+
+      this.setState({
+        isLoading: false,
+        dataSource: responseJson,
+      }, function(){
+
+      });
+
+    })
+    .catch((error) =>{
+      console.error(error);
+    });
+  }
+
+
+  torles=(szam)=>{
     //alert(szam)
     
     var bemenet={
@@ -18,7 +37,7 @@ export default class Szavazas extends React.Component {
     }
     
 
-  fetch("http://localhost:8080/szavazatfelvitel", {
+  fetch("http://localhost:8080/torles", {
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -26,27 +45,13 @@ export default class Szavazas extends React.Component {
   
   )
   .then(x => x.text())
-  .then(y => alert(y));
+  .then(y => {alert(y);this.lekerdez()})
 
   }
 
 
   componentDidMount(){
-    return fetch('http://localhost:8080/animek')
-      .then((response) => response.json())
-      .then((responseJson) => {
-
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson,
-        }, function(){
-
-        });
-
-      })
-      .catch((error) =>{
-        console.error(error);
-      });
+    this.lekerdez()
   }
 
 
@@ -74,9 +79,9 @@ export default class Szavazas extends React.Component {
 
           <TouchableOpacity
         style={styles.lilagomb}
-        onPress={async ()=>this.szavazat(item.anime_id)}
+        onPress={async ()=>this.torles(item.anime_id)}
       >
-        <Text style={{color:"black",fontWeight:"bold",fontSize:15}}  >Erre szavazok</Text>
+        <Text style={{color:"black",fontWeight:"bold",fontSize:15}}  >Ezt szeretném törölni</Text>
       </TouchableOpacity>
       <Text style={{marginTop:10}}></Text>
           </View>

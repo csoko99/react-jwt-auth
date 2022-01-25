@@ -1,5 +1,5 @@
 import React, { Component,setState } from 'react';
-import { Button, StyleSheet, View,FlatList,Image,Text} from 'react-native';
+import { Button, StyleSheet, View,FlatList,Image,Text} from 'react-native-web';
 
 
 

@@ -19,6 +19,7 @@ import Megjelenes from "./sajatosztajok/Megjelenes";
 import Mufaj from "./sajatosztajok/Mufaj";
 import Szavazas from "./sajatosztajok/Szavazas";
 import Torles from "./sajatosztajok/Torles"
+import Leiras_torles from "./sajatosztajok/Leiras_torles"
 
 class App extends Component {
   constructor(props) {
@@ -115,10 +116,18 @@ class App extends Component {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/Torles"} className="nav-link">
-                  Törlés
+                  Anime örlés
                 </Link>
               </li>
             )}
+
+            {showAdminBoard && (
+              <li className="nav-item">
+                <Link to={"/Leiras_torles"} className="nav-link">
+                  Leírás törlés
+                </Link>
+              </li>
+            )} 
 
             {currentUser && (
               <li className="nav-item">
@@ -174,6 +183,7 @@ class App extends Component {
             <Route path="/Mufaj" component={Mufaj} />
             <Route path="/Szavazas" component={Szavazas} />
             <Route path="/Torles" component={Torles} />
+            <Route path="/Leiras_torles" component={Leiras_torles} />
           </Switch>
         </div>
       </div>

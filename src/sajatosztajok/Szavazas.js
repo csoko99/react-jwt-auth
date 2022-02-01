@@ -25,8 +25,8 @@ export default class Szavazas extends React.Component {
     }
   
   )
-  .then(x => x.text())
-  .then(y => alert(y));
+    .then(x => x.text())
+    .then(y => alert(y));
 
   }
 

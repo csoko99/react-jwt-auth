@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet,Text, TextInput, View,TouchableOpacity } from 'react-native-web';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from 'react-bootstrap/Button';
+
+
 
 export default class Fevitel extends Component {
   constructor(props) {
@@ -10,12 +14,12 @@ export default class Fevitel extends Component {
         datum:"",
         mufaj:"",
         evad:"",
-
+        leiras:"",
     };
   }
 
 felvitel=async ()=>{
-    //alert("megnyomva a gomb")
+    //alert(this.state.nev)
 
     if (this.state.nev=="" || this.state.datum=="" || this.state.mufaj==""|| this.state.evad=="")
     {
@@ -30,6 +34,17 @@ felvitel=async ()=>{
       
     }
 
+    if (this.state.leiras=="")
+    {
+      alert("Add meg a leírást!")
+      return
+    }
+    let leiras_felvitel={
+      leiras:this.state.leiras,
+      
+    }
+
+
     fetch('http://localhost:8080/anime_felvitel',{
       method: "POST",
       body: JSON.stringify(bemenet),
@@ -42,6 +57,21 @@ felvitel=async ()=>{
 
     alert(szoveg)
      
+
+})
+
+fetch('http://localhost:8080/leiras_felvitel',{
+  method: "POST",
+  body: JSON.stringify(leiras_felvitel),
+  headers: {"Content-type": "application/json; charset=UTF-8"}
+}
+   
+)
+.then((response) => response.text())
+.then((szoveg) => {
+
+alert(szoveg)
+ 
 
 })
     
@@ -67,65 +97,81 @@ componentDidMount(){
 
   render() {
     return (
+      
+         
     <View style = {{backgroundColor:'white',width:'80%',borderRadius:20,alignSelf:'center'}}>
+    
+    
+
       <View style={{padding: 10}}>
-          <Text style={{padding: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+      
+          <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Anime név:
           </Text>
         <TextInput
           placeholderTextColor="white"
-          style={{height: 40,width:'50%',alignSelf:'center',backgroundColor:'blue',borderColor:'black',color:"white"}}
+          style={{height: 40,width:'50%',alignSelf:'center',backgroundColor:'grey',borderColor:'black',color:"white", padding: 10}}
           placeholder="Add meg az anime nevét:"
           onChangeText={(nev) => this.setState({nev})}
           value={this.state.nev}
         />
+        
 
-        <Text style={{paddingTop: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+        <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Megjelenési dátum:
           </Text>
         <TextInput
           placeholderTextColor="white"
-          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'blue',marginBottom:5,textAlignVertical:'top',color:"white"}}
+          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'grey',marginBottom:5,textAlignVertical:'top',color:"white"}}
           placeholder="Add meg a dátumot:"
           onChangeText={(datum) => this.setState({datum})}
           value={this.state.datum}
         />
 
-        <Text style={{paddingTop: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+        <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Anime műfaj:
           </Text>
         <TextInput
           placeholderTextColor="white"
-          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'blue',marginBottom:5,textAlignVertical:'top',color:"white"}}
+          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'grey',marginBottom:5,textAlignVertical:'top',color:"white"}}
           placeholder="Add meg a műfajt:"
           onChangeText={(mufaj) => this.setState({mufaj})}
           value={this.state.mufaj}
         />
 
-        <Text style={{paddingTop: 10, fontSize: 22,color:'white',textAlign:'center'}}>
+        <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Évadok száma:
           </Text>
         <TextInput
           placeholderTextColor="white"
-          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'blue',marginBottom:5,textAlignVertical:'top',color:"white"}}
+          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'grey',marginBottom:5,textAlignVertical:'top',color:"white"}}
           placeholder="Add meg az évadok számát:"
           onChangeText={(evad) => this.setState({evad})}
           value={this.state.evad}
         />
-         <TouchableOpacity
-          onPress={async ()=>this.felvitel()}>
-          <View style={styles.gomb}>
-            <Text style={styles.gombSzoveg}>Felvitel</Text>
-          </View>
-        </TouchableOpacity>
+        <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
+              Leírás:
+          </Text>
+        <TextInput
+          placeholderTextColor="white"
+          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'grey',marginBottom:5,textAlignVertical:'top',color:"white"}}
+          placeholder="Add meg a leírást:"
+          onChangeText={(leiras) => this.setState({leiras})}
+          value={this.state.leiras}
+        />
         
+        
+
+        <Button variant="primary" type="submit" onClick={async ()=>this.felvitel()} style={{width:'40%', alignSelf:'center', margin: 10}}>Felvitel</Button>
       </View>
       
     </View>
+    
     );
     
   }
 }
+
 
 const styles = StyleSheet.create({
     gombSzoveg:{
@@ -137,9 +183,7 @@ const styles = StyleSheet.create({
     },
     gomb:{
             height:45,
-            backgroundColor:'blue',
             width:'45%',
-            alignSelf:'center',
-            borderRadius:10
+           
     },
 });

@@ -79,7 +79,13 @@ class App extends Component {
            {showAdminBoard && (
           <Nav.Link href="/Leiras_torles">Leírás törlés</Nav.Link>
           )}
+          {showAdminBoard && (
+          <Nav.Link href="/admin">Admin lap</Nav.Link>
+          )}
 
+          {showModeratorBoard && (
+          <Nav.Link href="/mod">Moderátor lap</Nav.Link>
+          )}
           
           <NavDropdown title="Egyéb" id="collasible-nav-dropdown">
             <NavDropdown.Item href="/Mufaj">Műfaj szerinti keresés</NavDropdown.Item>
@@ -118,127 +124,7 @@ class App extends Component {
     </Navbar>
 
         
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-            bezKoder
-          </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to={"/Proba"} className="nav-link">
-                Próba
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to={"/Anime"} className="nav-link">
-                Animék
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to={"/Mufaj"} className="nav-link">
-                Mufaj
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to={"/Megjelenes"} className="nav-link">
-                Megjelenés
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to={"/Szavazas"} className="nav-link">
-                Szavazás
-              </Link>
-            </li>
-
-            {showModeratorBoard && (
-              <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
-                  Moderator Board
-                </Link>
-              </li>
-            )}
-            
-            
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Lap
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/Felvitel"} className="nav-link">
-                  Felvitel
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/Torles"} className="nav-link">
-                  Anime örlés
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/Leiras_torles"} className="nav-link">
-                  Leírás törlés
-                </Link>
-              </li>
-            )} 
-
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
-          </div>
-
-          {currentUser ? (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
-                </a>
-              </li>
-            </div>
-          ) : (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
-                  Login
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
-              </li>
-            </div>
-          )}
-        </nav>
+       
 
         <div className="container mt-3">
           <Switch>

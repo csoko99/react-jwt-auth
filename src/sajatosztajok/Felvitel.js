@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet,Text, TextInput, View,TouchableOpacity } from 'react-native-web';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from 'react-bootstrap/Button';
+import FileUpload from "./upload"
 
 
 
@@ -27,6 +28,7 @@ felvitel=async ()=>{
       return
     }
     let bemenet={
+      
       bevitel1:this.state.nev,
       bevitel2:this.state.datum,
       bevitel3:this.state.mufaj,
@@ -104,7 +106,7 @@ componentDidMount(){
     
 
       <View style={{padding: 10}}>
-      
+      <FileUpload szoveg={this.state.szoveg} style={{alignSelf:'center'}}></FileUpload>
           <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Anime név:
           </Text>

@@ -11,10 +11,13 @@
     "expo": "^1.0.0",
     "react": "^16.14.0",
     "react-bootstrap": "^2.1.2",
+    "react-datepicker": "^4.7.0",
     "react-dom": "^16.13.0",
+    "react-iframe": "^1.8.0",
     "react-native-web": "^0.17.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.0.1",
+    "react-table": "^7.7.0",
     "react-validation": "^3.0.7",
     "validator": "^13.7.0"
   },

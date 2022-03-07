@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet,Text, TextInput, View,TouchableOpacity } from 'react-native-web';
+import { Text, TextInput, View } from 'react-native-web';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from 'react-bootstrap/Button';
+
 import FileUpload from "./upload"
 
 
@@ -10,74 +10,19 @@ export default class Fevitel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
         nev:"",
         datum:"",
         mufaj:"",
         evad:"",
+        triler:"",
         leiras:"",
+        
     };
   }
 
-felvitel=async ()=>{
-    //alert(this.state.nev)
 
-    if (this.state.nev=="" || this.state.datum=="" || this.state.mufaj==""|| this.state.evad=="")
-    {
-      alert("Add meg a mezőket!")
-      return
-    }
-    let bemenet={
-      
-      bevitel1:this.state.nev,
-      bevitel2:this.state.datum,
-      bevitel3:this.state.mufaj,
-      bevitel4:this.state.evad,
-      
-    }
-
-    if (this.state.leiras=="")
-    {
-      alert("Add meg a leírást!")
-      return
-    }
-    let leiras_felvitel={
-      leiras:this.state.leiras,
-      
-    }
-
-
-    fetch('http://localhost:8080/anime_felvitel',{
-      method: "POST",
-      body: JSON.stringify(bemenet),
-      headers: {"Content-type": "application/json; charset=UTF-8"}
-    }
-       
-    )
-    .then((response) => response.text())
-    .then((szoveg) => {
-
-    alert(szoveg)
-     
-
-})
-
-fetch('http://localhost:8080/leiras_felvitel',{
-  method: "POST",
-  body: JSON.stringify(leiras_felvitel),
-  headers: {"Content-type": "application/json; charset=UTF-8"}
-}
-   
-)
-.then((response) => response.text())
-.then((szoveg) => {
-
-alert(szoveg)
- 
-
-})
     
-}
+
 componentDidMount(){
     return fetch('http://localhost:8080/animek')
       .then((response) => response.json())
@@ -106,7 +51,7 @@ componentDidMount(){
     
 
       <View style={{padding: 10}}>
-      <FileUpload szoveg={this.state.szoveg} style={{alignSelf:'center'}}></FileUpload>
+     
           <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Anime név:
           </Text>
@@ -151,6 +96,18 @@ componentDidMount(){
           onChangeText={(evad) => this.setState({evad})}
           value={this.state.evad}
         />
+
+       <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
+              Trailer link:
+          </Text>
+        <TextInput  
+          placeholderTextColor="white"
+          style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'grey',marginBottom:5,textAlignVertical:'top',color:"white"}}
+          placeholder="Add meg az évadok számát:"
+          onChangeText={(trailer) => this.setState({trailer})}
+          value={this.state.trailer}
+        />
+        
         <Text style={{padding: 10, fontSize: 22,color:'black',textAlign:'center'}}>
               Leírás:
           </Text>
@@ -161,10 +118,10 @@ componentDidMount(){
           onChangeText={(leiras) => this.setState({leiras})}
           value={this.state.leiras}
         />
-        
-        
+      
+        <FileUpload szoveg={this.state.szoveg} nev={this.state.nev} datum={this.state.datum} mufaj={this.state.mufaj} evad={this.state.evad} leiras={this.state.leiras} ></FileUpload>
 
-        <Button variant="primary" type="submit" onClick={async ()=>this.felvitel()} style={{width:'40%', alignSelf:'center', margin: 10}}>Felvitel</Button>
+        
       </View>
       
     </View>
@@ -175,17 +132,3 @@ componentDidMount(){
 }
 
 
-const styles = StyleSheet.create({
-    gombSzoveg:{
-            textAlign:'center',
-            color:'white',
-            marginTop:'auto',
-            marginBottom:'auto',
-            fontSize:25
-    },
-    gomb:{
-            height:45,
-            width:'45%',
-           
-    },
-});

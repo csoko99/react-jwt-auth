@@ -1,21 +1,23 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity, StyleSheet   } from 'react-native-web';
+import { FlatList, ActivityIndicator, Text, View, Image , StyleSheet   } from 'react-native-web';
+import Iframe from 'react-iframe';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 
 
 export default class Anime extends React.Component {
 
+
+  
   constructor(props){
     super(props);
     this.state ={ isLoading: true}
   }
 
-  kattintas=(sorszam, nev, mufaj, datum, evad, leiras)=>{
-    //alert(sorszam)
-    //alert(nev)
-   
-    this.props.navigacio.navigate('Seged',{aktid:sorszam, aktnev:nev, aktmufaj:mufaj, aktdatum:datum, aktevad:evad, aktleiras:leiras })
-    
-  }
+  
+  
 
   componentDidMount(){
     return fetch('http://localhost:8080/animek')
@@ -25,6 +27,7 @@ export default class Anime extends React.Component {
         this.setState({
           isLoading: false,
           dataSource: responseJson,
+          date:new Date(),
         }, function(){
 
         });
@@ -44,6 +47,7 @@ export default class Anime extends React.Component {
     if(this.state.isLoading){
       return(
         <View style={{flex: 1, padding: 20}}>
+          
           <ActivityIndicator/>
         </View>
       )
@@ -61,21 +65,36 @@ export default class Anime extends React.Component {
 
 
           
-          <View style={styles.container}>
+          <View>
       
        
      
           <Image  source={{uri:'http://localhost:8080/'+item.anime_id+'.jpg'}}   style={{ width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} />  
           
-          <View style={styles.felso}>
+          
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Név: {item.anime_nev} </Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Megjelenés: {item.anime_megjdatum.split('T')[0].trim()} </Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Műfaj: {item.anime_mufaj} </Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Évadok száma: {item.anime_evadsz} db </Text>
+          <Iframe url={item.anime_trailer}
+          
+        width="100%"
+      
+        id="myId"
+        height="450px"
+        className="myClassname"
+        display="initial"
+        position="relative"
+        textAlign="center"
+        allow="fullscreen"
+       
+       
+        />
+
           <Text> </Text>
           
           
-          </View>
+          
           </View>
           
 
@@ -96,13 +115,8 @@ const styles = StyleSheet.create({
   container: {
    flex: 1,
    marginTop:40
-  },
-  felso: {
-    flex:1,
-    margin:5,
-   padding:10,
-
-  },  
+  }
+  
 }
 )
   

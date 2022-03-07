@@ -11,16 +11,16 @@ import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
-import BoardModerator from "./components/board-moderator.component";
-import BoardAdmin from "./components/board-admin.component";
-import Proba from "./sajatosztajok/Proba";
-import Anime from "./sajatosztajok/Anime";
-import Megjelenes from "./sajatosztajok/Megjelenes";
-import Mufaj from "./sajatosztajok/Mufaj";
-import Szavazas from "./sajatosztajok/Szavazas";
-import Torles from "./sajatosztajok/Torles";
-import Leiras_torles from "./sajatosztajok/Leiras_torles";
-import Felvitel from "./sajatosztajok/Felvitel";
+
+import Proba from "./sajatosztalyok/Proba";
+import Anime from "./sajatosztalyok/Anime";
+import Megjelenes from "./sajatosztalyok/Megjelenes";
+import Mufaj from "./sajatosztalyok/Mufaj";
+import Szavazas from "./sajatosztalyok/Szavazas";
+import Torles from "./sajatosztalyok/Torles";
+import Leiras_torles from "./sajatosztalyok/Leiras_torles";
+import Felvitel from "./sajatosztalyok/Felvitel";
+import Szavazatmegj from "./sajatosztalyok/Szavazatmegj"
 
 class App extends Component {
   constructor(props) {
@@ -79,13 +79,9 @@ class App extends Component {
            {showAdminBoard && (
           <Nav.Link href="/Leiras_torles">Leírás törlés</Nav.Link>
           )}
-          {showAdminBoard && (
-          <Nav.Link href="/admin">Admin lap</Nav.Link>
-          )}
+          
 
-          {showModeratorBoard && (
-          <Nav.Link href="/mod">Moderátor lap</Nav.Link>
-          )}
+          
           
           <NavDropdown title="Egyéb" id="collasible-nav-dropdown">
             <NavDropdown.Item href="/Mufaj">Műfaj szerinti keresés</NavDropdown.Item>
@@ -95,6 +91,7 @@ class App extends Component {
             
             <NavDropdown.Divider />
             <NavDropdown.Item href="/Szavazas">Szavazás</NavDropdown.Item>
+            <NavDropdown.Item href="/Szavazatmegj">Szavazás eredmény</NavDropdown.Item>
           </NavDropdown>
         </Nav>
         {currentUser ? 
@@ -133,8 +130,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
-            <Route path="/mod" component={BoardModerator} />
-            <Route path="/admin" component={BoardAdmin} />
+            <Route path="/Szavazatmegj" component={Szavazatmegj} />
             <Route path="/Proba" component={Proba} />
             <Route path="/Anime" component={Anime} />
             <Route path="/Megjelenes" component={Megjelenes} />

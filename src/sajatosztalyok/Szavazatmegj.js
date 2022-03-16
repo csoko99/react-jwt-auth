@@ -1,8 +1,7 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, Text, View, Image , StyleSheet   } from 'react-native-web';
-import Iframe from 'react-iframe';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
+
 
 
 
@@ -61,10 +60,7 @@ export default class Anime extends React.Component {
       
     }
      
-    var db=0;
-    if(this.state.szavazat_animeid="1") {
-        db++; 
-    }
+    
 
     return(
        
@@ -85,7 +81,7 @@ export default class Anime extends React.Component {
           <Image  source={{uri:'http://localhost:8080/'+item.anime_id+'.jpg'}}   style={{ width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} />  
           
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Név: {item.anime_nev} </Text>
-          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Szavazatok {db} </Text>
+          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Szavazatok: {item.darab} db</Text>
           
 
           <Text> </Text>

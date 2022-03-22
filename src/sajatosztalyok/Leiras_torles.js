@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, FlatList, ActivityIndicator, Text, View } from 'react-native-web';
+import { FlatList, ActivityIndicator, Text, View } from 'react-native-web';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from 'react-bootstrap/Button';
 
@@ -92,15 +92,3 @@ export default class Torles extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  
-  lilagomb: {
-    alignItems: "center",
-    backgroundColor: "purple",
-    padding: 10,
-    width:300,
-    marginLeft:"auto",
-    marginRight:"auto",
-    borderRadius:10,
-  }
-});

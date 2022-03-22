@@ -1,8 +1,7 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image , StyleSheet   } from 'react-native-web';
+import { FlatList, ActivityIndicator, Text, View, Image } from 'react-native-web';
 import Iframe from 'react-iframe';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 
 
 
@@ -110,15 +109,5 @@ export default class Anime extends React.Component {
       </View>
     );
   }
-}
-const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   marginTop:40
-  }
-  
-}
-)
-  
-  
+} 
 ;

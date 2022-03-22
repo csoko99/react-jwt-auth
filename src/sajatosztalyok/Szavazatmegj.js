@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image , StyleSheet   } from 'react-native-web';
+import { FlatList, ActivityIndicator, Text, View, Image   } from 'react-native-web';
 
 
 
@@ -104,14 +104,4 @@ export default class Anime extends React.Component {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   marginTop:40
-  }
-  
-}
-)
-  
-  
 ;

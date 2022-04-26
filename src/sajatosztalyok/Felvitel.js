@@ -14,7 +14,7 @@ export default class Fevitel extends Component {
         datum:"",
         mufaj:"",
         evad:"",
-        triler:"",
+        trailer:"",
         leiras:"",
         
     };
@@ -103,7 +103,7 @@ componentDidMount(){
         <TextInput  
           placeholderTextColor="white"
           style={{height: 40, width:'50%',alignSelf:'center',backgroundColor:'grey',marginBottom:5,textAlignVertical:'top',color:"white"}}
-          placeholder="Add meg az évadok számát:"
+          placeholder="Add meg a trailer url-jét:"
           onChangeText={(trailer) => this.setState({trailer})}
           value={this.state.trailer}
         />
@@ -119,7 +119,7 @@ componentDidMount(){
           value={this.state.leiras}
         />
       
-        <FileUpload szoveg={this.state.szoveg} nev={this.state.nev} datum={this.state.datum} mufaj={this.state.mufaj} evad={this.state.evad} leiras={this.state.leiras} ></FileUpload>
+        <FileUpload szoveg={this.state.szoveg} nev={this.state.nev} datum={this.state.datum} mufaj={this.state.mufaj} evad={this.state.evad} trailer={this.state.trailer} leiras={this.state.leiras} ></FileUpload>
 
         
       </View>

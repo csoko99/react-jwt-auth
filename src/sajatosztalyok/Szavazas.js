@@ -11,8 +11,6 @@ export default class Szavazas extends React.Component {
   }
 
   szavazat=(szam)=>{
-    //alert(szam)
-    
     var bemenet={
       bevitel1:szam
     }
